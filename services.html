@@ -3,65 +3,156 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services | AIDevHaus</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <title>Services – AIDevHaus</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'media',
+      theme: {
+        extend: {
+          colors: {
+            accent1: '#9b5de5',
+            accent2: '#00f5d4',
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            manrope: ['Manrope', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Manrope:wght@300;600&display=swap" rel="stylesheet">
+
+  <style>
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.3;
+      z-index: -1;
+      animation: floatBlob 30s ease-in-out infinite alternate;
+    }
+    .blob1 {
+      background: radial-gradient(circle at center, #9b5de5, transparent 70%);
+      width: 600px; height: 600px;
+      top: -100px; left: -100px;
+    }
+    .blob2 {
+      background: radial-gradient(circle at center, #00f5d4, transparent 70%);
+      width: 700px; height: 700px;
+      bottom: -150px; right: -150px;
+      animation-delay: 10s;
+    }
+    @keyframes floatBlob {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(100px, -80px) scale(1.2); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+  </style>
 </head>
 
-<body>
-  <header class="navbar">
-    <div class="logo">AIDevHaus</div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+<body class="font-manrope bg-gradient-to-br from-white via-gray-100 to-gray-200 dark:from-gray-900 dark:via-black dark:to-gray-900 text-gray-900 dark:text-gray-100 relative overflow-x-hidden">
+
+  <!-- Floating Blobs -->
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 w-full backdrop-blur-md bg-white/20 dark:bg-gray-900/40 z-50 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <h1 class="font-orbitron text-2xl bg-gradient-to-r from-accent1 to-accent2 bg-clip-text text-transparent">AIDevHaus</h1>
+      <nav>
+        <ul id="nav-links" class="hidden md:flex gap-8 font-medium">
+          <li><a href="index.html" class="hover:text-accent2 transition">Home</a></li>
+          <li><a href="services.html" class="text-accent2 font-semibold">Services</a></li>
+          <li><a href="pricing.html" class="hover:text-accent2 transition">Pricing</a></li>
+          <li><a href="contact.html" class="hover:text-accent2 transition">Contact</a></li>
+        </ul>
+        <button id="hamburger" class="md:hidden flex flex-col gap-1">
+          <span class="block w-6 h-[2px] bg-gradient-to-r from-accent1 to-accent2"></span>
+          <span class="block w-6 h-[2px] bg-gradient-to-r from-accent1 to-accent2"></span>
+          <span class="block w-6 h-[2px] bg-gradient-to-r from-accent1 to-accent2"></span>
+        </button>
+      </nav>
+    </div>
+    <ul id="mobile-menu" class="hidden flex-col items-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-md py-4 space-y-3 md:hidden">
+      <li><a href="index.html" class="hover:text-accent2 transition">Home</a></li>
+      <li><a href="services.html" class="text-accent2 font-semibold">Services</a></li>
+      <li><a href="pricing.html" class="hover:text-accent2 transition">Pricing</a></li>
+      <li><a href="contact.html" class="hover:text-accent2 transition">Contact</a></li>
+    </ul>
   </header>
 
-  <section class="section fade-in" style="padding-top:8rem;">
-    <h1 class="section-title">Our Services</h1>
-    <p>Comprehensive digital development — from concept to deployment.</p>
+  <!-- Hero -->
+  <section class="pt-40 text-center px-6">
+    <h2 class="text-4xl md:text-5xl font-orbitron bg-gradient-to-r from-accent1 to-accent2 bg-clip-text text-transparent mb-6">
+      Our Expertise
+    </h2>
+    <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+      From concept to code — AIDevHaus delivers top-tier web, mobile, and desktop solutions with precision and performance.
+    </p>
+  </section>
 
-    <div class="services-grid">
-      <div class="service-card fade-in">
-        <div class="icon">🌐</div>
-        <h3>Website Development</h3>
-        <p>Responsive, SEO-ready sites that load fast and look amazing on any device.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="icon">📱</div>
-        <h3>Android Applications</h3>
-        <p>Custom apps designed to scale — simple, secure and beautifully built.</p>
-      </div>
-      <div class="service-card fade-in">
-        <div class="icon">💻</div>
-        <h3>Windows Software</h3>
-        <p>Powerful desktop solutions for automation and productivity.</p>
-      </div>
+  <!-- Services Grid -->
+  <section class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-20">
+    <!-- Web Dev -->
+    <div class="p-8 rounded-2xl bg-white/10 dark:bg-gray-900/40 border border-white/20 backdrop-blur-lg shadow-lg hover:shadow-accent2/30 transition-all duration-500">
+      <div class="text-4xl mb-4">🌐</div>
+      <h3 class="font-orbitron text-2xl mb-2 bg-gradient-to-r from-accent1 to-accent2 bg-clip-text text-transparent">Website Development</h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Modern, responsive, and high-performance websites built for visibility, speed, and conversions.
+      </p>
+      <a href="website-development.html" class="text-accent2 font-semibold hover:text-accent1 transition">Learn More →</a>
+    </div>
+
+    <!-- Android -->
+    <div class="p-8 rounded-2xl bg-white/10 dark:bg-gray-900/40 border border-white/20 backdrop-blur-lg shadow-lg hover:shadow-accent2/30 transition-all duration-500">
+      <div class="text-4xl mb-4">📱</div>
+      <h3 class="font-orbitron text-2xl mb-2 bg-gradient-to-r from-accent1 to-accent2 bg-clip-text text-transparent">Android App Development</h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Custom-built Android apps designed for seamless performance and intuitive user experiences.
+      </p>
+      <a href="android-apps.html" class="text-accent2 font-semibold hover:text-accent1 transition">Learn More →</a>
+    </div>
+
+    <!-- Windows -->
+    <div class="p-8 rounded-2xl bg-white/10 dark:bg-gray-900/40 border border-white/20 backdrop-blur-lg shadow-lg hover:shadow-accent2/30 transition-all duration-500">
+      <div class="text-4xl mb-4">💻</div>
+      <h3 class="font-orbitron text-2xl mb-2 bg-gradient-to-r from-accent1 to-accent2 bg-clip-text text-transparent">Windows Software</h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Powerful desktop applications tailored for businesses that need performance and stability.
+      </p>
+      <a href="windows-software.html" class="text-accent2 font-semibold hover:text-accent1 transition">Learn More →</a>
     </div>
   </section>
 
-  <section class="section fade-in">
-    <h2 class="section-title">How We Work</h2>
-    <ul class="features-list" style="max-width:700px;margin:auto;text-align:left;">
-      <li>✔ Discuss and refine your idea</li>
-      <li>✔ Rapid prototype & feedback loop</li>
-      <li>✔ Develop using modern AI-assisted tools</li>
-      <li>✔ Deliver and maintain with care</li>
-    </ul>
+  <!-- CTA -->
+  <section class="relative text-center py-20 px-6 max-w-3xl mx-auto my-20 bg-white/10 dark:bg-gray-900/40 border border-white/20 backdrop-blur-lg rounded-2xl shadow-lg hover:shadow-accent2/30 transition-all duration-500">
+    <h2 class="text-3xl md:text-4xl font-orbitron bg-gradient-to-r from-accent1 to-accent2 bg-clip-text text-transparent mb-4">
+      Let’s Build Your Next Big Idea
+    </h2>
+    <p class="text-lg text-gray-200 mb-6">
+      Whether it’s a website, mobile app, or desktop solution — we bring your vision to life with speed and precision.
+    </p>
+    <a href="contact.html" class="inline-block px-6 py-3 border-2 border-accent2 text-accent2 rounded-full font-semibold hover:bg-accent2 hover:text-black transition-all duration-300">
+      Contact Us
+    </a>
   </section>
 
-  <section class="cta fade-in">
-    <h2>Let’s Start Your Project</h2>
-    <p>Get a free consultation within 24 hours.</p>
-    <a href="contact.html" class="btn primary">Contact Now</a>
-  </section>
-
-  <footer class="footer">
-    <p>© 2025 AIDevHaus. All rights reserved.</p>
+  <!-- Footer -->
+  <footer class="text-center py-6 text-sm opacity-70">
+    © 2025 AIDevHaus. All rights reserved.
   </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
