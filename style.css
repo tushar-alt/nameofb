@@ -1,12 +1,8 @@
-/* =====================================================
-   AIDevHaus – Premium Futuristic Theme (Purple–Teal)
-   ===================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Manrope:wght@300;400;600&display=swap');
 
 :root {
-  --accent1: #9b5de5;  /* purple */
-  --accent2: #00f5d4;  /* teal */
+  --accent1: #9b5de5;
+  --accent2: #00f5d4;
   --bg-light: #f7f8fc;
   --text-light: #1a1a1a;
   --bg-dark: #0a0a0f;
@@ -14,7 +10,6 @@
   --transition: 0.4s ease;
 }
 
-/* Dark / Light adaptive */
 @media (prefers-color-scheme: dark) {
   body { background: var(--bg-dark); color: var(--text-dark); }
 }
@@ -22,7 +17,6 @@
   body { background: var(--bg-light); color: var(--text-light); }
 }
 
-/* ============ GLOBAL ============ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -31,7 +25,7 @@ body {
   line-height: 1.6;
 }
 
-/* ============ NAVBAR ============ */
+/* NAVBAR */
 .navbar {
   position: fixed;
   top: 0;
@@ -68,11 +62,9 @@ body {
   font-weight: 500;
   transition: color var(--transition);
 }
-.nav-links a:hover {
-  color: var(--accent2);
-}
+.nav-links a:hover { color: var(--accent2); }
 
-/* ============ HERO ============ */
+/* HERO */
 .hero {
   position: relative;
   height: 100vh;
@@ -133,9 +125,8 @@ body {
   color: #000;
 }
 
-/* Floating blob animation */
-.hero::before,
-.hero::after {
+/* BLOBS */
+.hero::before, .hero::after {
   content: "";
   position: absolute;
   width: 500px;
@@ -154,7 +145,7 @@ body {
   50% { transform: translate(100px,-80px) scale(1.2); }
 }
 
-/* ============ SECTIONS ============ */
+/* SECTIONS */
 .section {
   padding: 6rem 2rem;
   text-align: center;
@@ -167,7 +158,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ============ SERVICE CARDS ============ */
+/* CARDS */
 .services-grid, .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
@@ -186,28 +177,19 @@ body {
   transform: translateY(-10px) rotateX(5deg);
   box-shadow: 0 10px 30px rgba(0,245,212,0.2);
 }
-.icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
+.icon { font-size: 2rem; margin-bottom: 1rem; }
 
-/* ============ CTA ============ */
+/* CTA */
 .cta {
   text-align: center;
   padding: 5rem 2rem;
   background: linear-gradient(135deg,var(--accent1),var(--accent2));
   color: #fff;
 }
-.cta h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-.cta p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-}
+.cta h2 { font-size: 2rem; margin-bottom: 1rem; }
+.cta p { font-size: 1.1rem; margin-bottom: 1.5rem; }
 
-/* ============ FOOTER ============ */
+/* FOOTER */
 .footer {
   text-align: center;
   padding: 2rem;
@@ -215,7 +197,7 @@ body {
   font-size: 0.9rem;
 }
 
-/* ============ SCROLL REVEAL ============ */
+/* SCROLL REVEAL */
 .fade-in {
   opacity: 0;
   transform: translateY(40px);
@@ -226,9 +208,82 @@ body {
   transform: translateY(0);
 }
 
-/* Responsive */
-@media (max-width:768px){
-  .navbar { padding: 1rem 1.5rem; }
-  .hero h1 { font-size: 2rem; }
-  .hero-buttons { flex-direction: column; }
+/* =========================================
+   MOBILE & TABLET RESPONSIVENESS FIXES
+   ========================================= */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 1rem 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding: 6rem 1.5rem 4rem;
+  }
+  .hero h1 {
+    font-size: 1.9rem;
+    line-height: 1.4;
+  }
+  .hero p {
+    font-size: 1rem;
+    margin-top: 0.8rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.8rem;
+  }
+  .btn {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.8rem 0;
+  }
+  .hero::before, .hero::after {
+    width: 250px;
+    height: 250px;
+    opacity: 0.3;
+  }
+  .section {
+    padding: 4rem 1.5rem;
+  }
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .services-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .service-card,
+  .price-card {
+    padding: 1.5rem;
+    font-size: 0.95rem;
+  }
+  .cta {
+    padding: 3.5rem 1.5rem;
+  }
+  .cta h2 {
+    font-size: 1.6rem;
+  }
+  .cta p {
+    font-size: 1rem;
+  }
+  .footer {
+    font-size: 0.85rem;
+    padding: 1.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.6rem; }
+  .logo { font-size: 1.1rem; }
+  .nav-links a { font-size: 0.9rem; }
 }
