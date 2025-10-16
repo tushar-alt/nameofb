@@ -16,16 +16,6 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Button hover glow
-document.querySelectorAll('.btn.primary').forEach(btn => {
-  btn.addEventListener('mouseenter', () => {
-    btn.style.boxShadow = '0 0 25px rgba(0,245,212,0.6)';
-  });
-  btn.addEventListener('mouseleave', () => {
-    btn.style.boxShadow = '0 0 15px rgba(155,93,229,0.4)';
-  });
-});
-
 // Hamburger toggle
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
@@ -33,3 +23,20 @@ hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
   navLinks.classList.toggle('show');
 });
+
+// =====================
+// TYPEWRITER ANIMATION (JS)
+// =====================
+const textElement = document.getElementById('typewriter-text');
+const text = "We Create Next-Gen Websites,\nApps & Software — Faster and Smarter.";
+let i = 0;
+
+function typeWriter() {
+  if (i < text.length) {
+    textElement.textContent += text.charAt(i);
+    i++;
+    const delay = text[i - 1] === ',' ? 200 : 60; // slight pause after commas
+    setTimeout(typeWriter, delay);
+  }
+}
+window.addEventListener('load', typeWriter);
