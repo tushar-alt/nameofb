@@ -17,26 +17,30 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // Hamburger toggle
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navLinks.classList.toggle('show');
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('show');
+    });
+  }
 });
 
-// =====================
-// TYPEWRITER ANIMATION (JS)
-// =====================
-const textElement = document.getElementById('typewriter-text');
-const text = "We Create Next-Gen Websites,\nApps & Software — Faster and Smarter.";
-let i = 0;
-
-function typeWriter() {
-  if (i < text.length) {
-    textElement.textContent += text.charAt(i);
-    i++;
-    const delay = text[i - 1] === ',' ? 200 : 60; // slight pause after commas
-    setTimeout(typeWriter, delay);
+// Typewriter (only on home)
+window.addEventListener('load', () => {
+  const textElement = document.getElementById('typewriter-text');
+  if (!textElement) return; // skip if not home page
+  const text = "We Create Next-Gen Websites,\nApps & Software — Faster and Smarter.";
+  let i = 0;
+  function typeWriter() {
+    if (i < text.length) {
+      textElement.textContent += text.charAt(i);
+      i++;
+      const delay = text[i - 1] === ',' ? 200 : 60;
+      setTimeout(typeWriter, delay);
+    }
   }
-}
-window.addEventListener('load', typeWriter);
+  setTimeout(typeWriter, 400);
+});
